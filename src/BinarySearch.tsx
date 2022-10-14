@@ -9,9 +9,6 @@ export function BinarySearch() : JSX.Element {
     const [lo, setLo] = useState(0);
     const [needleIdx, setNeedleIdx] = useState(Math.floor(Math.random() * n));
 
-    
-
-
     useEffect(() => {
         const interval = setInterval(() => {
             step();
