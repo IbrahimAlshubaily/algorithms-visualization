@@ -37,29 +37,26 @@ export function QuickSort() : JSX.Element {
         let idx = lo;
         for (let i = lo; i < hi; i++){
             if (arr[i] < arr[hi]){
-                const tmp = arr[i];
-                arr[i] = arr[idx];
-                arr[idx] = tmp;
+                swap(arr, i, idx);
                 idx++
             }
         }
-        const tmp = arr[hi];
-        arr[hi] = arr[idx];
-        arr[idx] = tmp;
+        swap(arr, hi, idx);
         return idx;
     }
 
-
-    const entries: JSX.Element[] = [];
-    console.log('currIdx ',currIdx)
-    const idx = Math.min(currIdx, numSteps - 1)
-    console.log('idx, numsteps ',idx, numSteps)
+    function swap(arr: number[], i: number, j: number) {
+        const tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
     
+    const entries: JSX.Element[] = [];
+    const idx = Math.min(currIdx, numSteps - 1)    
     for (let i = 0; i < n; i++) {
         
-        const h = hayStacks.length > 0 ? hayStacks[idx][i] * 2 : 100;
         const entryStyle = {
-            height : h,
+            height : hayStacks.length > 0 ? hayStacks[idx][i] * 2 : 100,
         }
         const entry = <div className="entry" style={entryStyle} key={i}/>
         entries.push(entry);
